@@ -22,6 +22,7 @@ int main(void)
 	{
 		printf("탐색실패 \n");
 	}
+
 	else
 	{
 		printf("타겟 저장 인덱스 : %d \n", idx);
