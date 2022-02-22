@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\01_WarmingUP.c">
+    <ClCompile Include="source\02_Linear_Search.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
