@@ -18,7 +18,7 @@ int main(void)
 
 	for (int i = 0; i < 5; i++)
 	{
-		p[i].name = (char*)malloc(sizeof(char) * 20);				// 구조체의 포인터멤버 name을 동적할당 ( + 1 은
+		p[i].name = (char*)malloc(sizeof(char) * 20);				// 구조체의 포인터멤버 name을 동적할당 ( 20바이트)
 		if (p[i].name == NULL)										// 메모리 부족시 발생
 		{
 			return -1;
@@ -51,6 +51,6 @@ int main(void)
 	for (int i = 0; i < 5; i++)
 	free(p[i].name);
 
-	printf(" 입력된 사원들의 평균급여는 %.1lf 원 이고 총급여액은 %d 원 입니다.\n", avg, sum);
+	printf("\n 입력된 사원들의 평균급여는 %.1lf 원 이고 총급여액은 %d 원 입니다.\n", avg, sum);
 
 }

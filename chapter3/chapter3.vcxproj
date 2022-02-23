@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\01_1_Review_structure_And_Malloc.c" />
+    <ClCompile Include="source\02_Linked_List.c" />
+    <ClCompile Include="source\ArrayList.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\ArrayList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
