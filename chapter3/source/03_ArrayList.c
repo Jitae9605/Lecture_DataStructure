@@ -11,7 +11,7 @@ void LInsert(List* plist, LData data)
 {
 	if (plist->numOfData >= LIST_LEN)
 	{
-		puts("юЗюЕюл ╨р╟║╢игу╢о╢ы.");
+		puts("О©╫О©╫О©╫О©╫О©╫О©╫ О©╫р╟О©╫О©╫О©╫О©╫у╢о╢О©╫.");
 		return;
 	}
 
