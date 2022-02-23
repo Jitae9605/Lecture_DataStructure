@@ -13,8 +13,30 @@ int Fibonacci(int n)
 
 }
 
+int Fibonacci_fail(int n)
+{
+	printf("func call param %d\n", n);
+	if (n == 1)
+		return 0;
+
+	else if (n == 2)
+		return 1;
+
+	else
+		return Fibonacci_fail(n - 1) + Fibonacci_fail(n - 2);
+
+}
+
+
 int main(void)
 {
+	printf(" \n=== < 틀린 방법 > ===\n\n");
+
+	Fibonacci_fail(7);
+	// 재귀함수 내부에 printf 같은 것을 사용하면 재귀되는 상황전부에서 내용을 출력한다.
+	//	즉, 유지보수측면이든 무슨 측면이든 반환값을 변수로 받는것이 옳다.
+
+	printf(" \n=== < 옳은 방법 > ===\n\n");
 	int i;
 
 	for (i = 1; i < 15; i++)
