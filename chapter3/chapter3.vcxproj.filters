@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\02_Linked_List.c">
+    <ClCompile Include="source\03_Point.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="source\ArrayList.c">
+    <ClCompile Include="source\03_PointListMain.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\03_ArrayList.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\ArrayList.h">
+    <ClInclude Include="source\03_Point.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="source\03_ArrayList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

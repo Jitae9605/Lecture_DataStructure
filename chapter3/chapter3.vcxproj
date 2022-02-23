@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="source\02_Linked_List.c" />
-    <ClCompile Include="source\ArrayList.c" />
+    <ClCompile Include="source\03_ArrayList.c" />
+    <ClCompile Include="source\03_Point.c" />
+    <ClCompile Include="source\03_PointListMain.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\ArrayList.h" />
+    <ClInclude Include="source\03_ArrayList.h" />
+    <ClInclude Include="source\03_Point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
