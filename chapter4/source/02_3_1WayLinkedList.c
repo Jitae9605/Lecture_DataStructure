@@ -101,21 +101,55 @@ int searchNode(Node* h, int data)
 		curr = curr->next;
 		i++;
 	}
+}
 
+Node* searchNode_struct(Node* h, int data)				// 강사님의 검색방법
+{
+	Node* curr = h->next;
+	while (curr != NULL)
+	{
+		if (curr->data == data)
+		{
+			printf("%d를 찾았습니다! \n", data);
+			return curr;
+		}
+		curr = curr->next;
+	}
+
+	printf("%d 를 찾지 못했습니다.\n", data);
+	return NULL;
 }
 
 void DeletNode(Node* h, int num)
 {
 	Node* curr = h->next; // curr이 1번째 노드를 가리킴
+	Node* temp = h->next;
 
-	for (int i = 0; i < num; i++)
+	for (int i = 0; i < num-1; i++)		// num-1인 이유는 지우고자하는 대상의 이전 노드에서 next를 대상노드를 뛰어넘어 다다음 노드를 가리키게 하기 위해
 	{
 		h = curr;
 		curr = curr->next;
 	}
-	free(h);
+	h->next = h->next->next;			// 이러면 출력이나 값은 제대로 나오지만 실제로 삭제된게 아니라 건너뛰었기때문에 노드가 남아있다!
+}
 
+void delNode(Node* h, Node* p)						// 강사님의 노드삭제함수
+{
+	Node* curr = h->next;
+	if (curr == p) {								// 첫번째 노드인경우,
+		h->next = p->next;							// 두번째 노드를 첫번째노드로 연결
+	}
+	else {											// 두번째이상인 경우,
+		while (curr->next != p) {					
+			curr = curr->next;						// 현노드의 next필드가 삭제노드인지 찾는다.
+		}				
+		curr->next = p->next;						// 삭제할 노드의 다음노드를 현 노드의 next멤버에 연결
+	}
+}
 
+void InsertNode_SpecipicNum(Node* h, int num)
+{
+	Node* curr = h->next;
 }
 
 
@@ -137,10 +171,16 @@ int main(void)
 
 	printf("찾고자 하는 값을 가진 노드는 %d번 노드 입니다.\n\n",searchNode(head, 30));		// 데이터값을 통한 노드 번호 검색함수
 
-	DeletNode(head, searchNode(head, 40));
-	printNode(head);
+	searchNode_struct(head, 20);														// 값의 존재여부를 탐색하는 함수
+
+	DeletNode(head, searchNode(head, 10));												// 노드번호를 입력받아 해당 번호의 노드를 삭제
+
+	printNode(head);				// 	DeletNode함수 때문에 해당 함수 출력시 튕김			
+
 	FreeNode(head);					// 노드를 삭제하는 함수
 	// printf("%d", head->next->data); // 삭제확인
+
+	InsertNode_SpecipicNum(head, 6);	// 6번째 노드의 뒤에 노드를 삽입하는 함수
 
 
 
