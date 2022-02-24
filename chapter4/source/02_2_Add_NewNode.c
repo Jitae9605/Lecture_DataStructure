@@ -23,7 +23,7 @@ void AddNode(Node* h, int data)		// 새로운 노드를 만든다음 head가 새로운 노드를 
 
 	}
 
-	else								// 노드가 있는경우
+	else								// 노드가 있는경우 - 현재 노드중 가장 앞쪽에 새로운 첫번째 노드를 만든다.
 	{
 		newNode->data = data;			// 입력한 데이터를 새로생성한 노드의 data에 넣는다.
 		newNode->next = h->next;		// 새로만든 노드의 next에 현재 헤드가 가리키고있는 노드의 주소를 입력
@@ -32,9 +32,12 @@ void AddNode(Node* h, int data)		// 새로운 노드를 만든다음 head가 새로운 노드를 
 
 }
 
-void PrintNode(Node* p)
+void PrintNode(Node* h)
 {
-	printf("%d %p %p\n\n", p->next->data, p, p->next);		// p->next->data = newNode->data    ,     %p p = 입력받은 포인터의 주소,   %p  p->next  = 입력받은 포인터p의 next가 가리키는 대상의 주소
+	Node* curr = h->next;		// curr = h->next = 해드가 가리키고 있는 구조체 자체
+	printf("%d %p %p\n\n", curr->data, curr, curr->next);		// curr->data = h->next->data ,
+																// %p curr = h->next가 가리키는 대상의 주소값,
+																// %p curr->next = h->net가 가리키는 대상의 next가 가리키는 대상의 주소값
 }
 
 int main(void)
@@ -43,10 +46,12 @@ int main(void)
 	head->next = NULL;
 
 
-	AddNode(head, 10);
+	AddNode(head, 10);					// 노드 추가 (첫 노드)
 	PrintNode(head);
-	AddNode(head, 20);
+
+	AddNode(head, 20);				
 	PrintNode(head);
+
 	AddNode(head, 30);
 	PrintNode(head);
 }
