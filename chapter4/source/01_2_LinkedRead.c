@@ -3,18 +3,18 @@
 
 typedef struct _node
 {
-	int data;
-	struct _node* next;
+	int data;							// 데이터를 저장할 멤버 변수
+	struct _node* next;					// 다음 노드의 주소를 저장할 멤버 포인터 변수
 } Node;
 
 int main(void)
 {
-	Node* head = NULL;
-	Node* tail = NULL;
-	Node* cur = NULL;
+	Node* head = NULL;					// 첫 노드의 주소를 가리키는 포인터 구조체
+	Node* tail = NULL;					// 마지막 노드의 주소를 가리키는 포인터 구조체
+	Node* cur = NULL;					// 현재 가리키고있는 노드의 주소를 가리키는 포인터 구조체
 
-	Node* newNode = NULL;
-	int readData;
+	Node* newNode = NULL;				// 새로운 노드를 추가하는 노드
+	int readData;						// 읽어온 데이터를 임시 저장할 변수
 
 	// 데이터를 입력받는 과정
 	while (1)

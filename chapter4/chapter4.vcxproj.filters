@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\01_2_LinkedRead.c">
+    <ClCompile Include="source\02_1_Simple_LinkedList.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
