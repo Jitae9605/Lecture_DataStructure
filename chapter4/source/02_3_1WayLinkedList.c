@@ -104,6 +104,20 @@ int searchNode(Node* h, int data)
 
 }
 
+void DeletNode(Node* h, int num)
+{
+	Node* curr = h->next; // curr이 1번째 노드를 가리킴
+
+	for (int i = 0; i < num; i++)
+	{
+		h = curr;
+		curr = curr->next;
+	}
+	free(h);
+
+
+}
+
 
 int main(void)
 {
@@ -122,7 +136,9 @@ int main(void)
 	printNode(head);				// 노드를 출력하는 함수
 
 	printf("찾고자 하는 값을 가진 노드는 %d번 노드 입니다.\n\n",searchNode(head, 30));		// 데이터값을 통한 노드 번호 검색함수
-	
+
+	DeletNode(head, searchNode(head, 40));
+	printNode(head);
 	FreeNode(head);					// 노드를 삭제하는 함수
 	// printf("%d", head->next->data); // 삭제확인
 
