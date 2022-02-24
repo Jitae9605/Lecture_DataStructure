@@ -80,14 +80,28 @@ void FreeNode(Node * h)
 {
 	Node* curr = h->next;			// curr이 첫번째 노드를 가리킴
 
-	while (curr->next != NULL)		// next가 NULL인 노드를 가리킬때까지 반복 
+	while (curr != NULL)			// next가 NULL인 노드를 curr이 가리킬때까지 반복 
 	{
-		h = curr;					// g
+		h = curr;					// 
 		curr = curr->next;
 		free(h);
 	}
 	
 	
+}
+
+int searchNode(Node* h, int data)
+{
+	int i = 1;
+	Node* curr = h->next;		// curr이 첫번째 노드를 가리킨다.
+	while (curr != NULL)
+	{
+		if (curr->data == data)
+			return i;
+		curr = curr->next;
+		i++;
+	}
+
 }
 
 
@@ -104,12 +118,13 @@ int main(void)
 	Pre_insertNode(head, 60);
 	
 	Rear_insertNode(head, 100);		// 노드를 뒷쪽에 추가하는 함수
-	
 
 	printNode(head);				// 노드를 출력하는 함수
-			
+
+	printf("찾고자 하는 값을 가진 노드는 %d번 노드 입니다.\n\n",searchNode(head, 30));		// 데이터값을 통한 노드 번호 검색함수
+	
 	FreeNode(head);					// 노드를 삭제하는 함수
-	printf("%d", head->next->data);
+	// printf("%d", head->next->data); // 삭제확인
 
 
 
