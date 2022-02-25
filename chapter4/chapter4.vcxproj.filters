@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\02_3_1WayLinkedList.c">
+    <ClCompile Include="source\03_2_2WayLinkedList.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

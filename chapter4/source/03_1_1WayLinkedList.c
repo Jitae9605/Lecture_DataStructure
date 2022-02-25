@@ -130,7 +130,9 @@ void DeletNode(Node* h, int num)
 		h = curr;
 		curr = curr->next;
 	}
+	curr = h->next;
 	h->next = h->next->next;			// 이러면 출력이나 값은 제대로 나오지만 실제로 삭제된게 아니라 건너뛰었기때문에 노드가 남아있다!
+	free(curr);
 }
 
 void delNode(Node* h, Node* p)						// 강사님의 노드삭제함수
@@ -145,9 +147,11 @@ void delNode(Node* h, Node* p)						// 강사님의 노드삭제함수
 		}				
 		curr->next = p->next;						// 삭제할 노드의 다음노드를 현 노드의 next멤버에 연결
 	}
+	free(p);										// 삭제할 노드 헤제
 }
 
-void InsertNode_SpecipicNum(Node* h, int num)
+// 작성할 것
+void InsertNode_SpecipicNum(Node* h, int data, int num)
 {
 	Node* curr = h->next;
 }
@@ -180,7 +184,7 @@ int main(void)
 	FreeNode(head);					// 노드를 삭제하는 함수
 	// printf("%d", head->next->data); // 삭제확인
 
-	InsertNode_SpecipicNum(head, 6);	// 6번째 노드의 뒤에 노드를 삽입하는 함수
+	InsertNode_SpecipicNum(head, 90 ,6);	// 6번째 노드의 뒤에 노드를 삽입하는 함수
 
 
 
