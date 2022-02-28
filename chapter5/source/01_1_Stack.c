@@ -1,3 +1,6 @@
+// 스택자료구조기본
+// 쓰임새 = 대표적으로 ctrl + z(실행취소), 뒤로가기 등의 동작에서 사용된다.
+
 #include <stdio.h>
 #include <stdbool.h>			// 헤더파일 stdbool.h를 포함해야 bool 자료형을 쓸수있다.
 

@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-typedef int element;			// stack의 요소는 element로 적어서 표시 - 안해도 됨 걍 알아보기 쉽게하려고
+typedef int element;				// stack의 요소는 element로 적어서 표시 - 안해도 됨 걍 알아보기 쉽게하려고
 
 typedef struct node{				// 리스트구조체
 	int data;
@@ -14,10 +14,10 @@ typedef struct {					// 헤드구조체
 }HStack;
 
 HStack* createHead();
-bool isEmpty(HStack* h);
-void push(HStack* h,element value);
-element pop(HStack*);
-element  peek(HStack*);
+bool isEmpty(HStack* ahead);
+void push(HStack* ahead, element value);
+element pop(HStack* ahead);
+element peek(HStack* ahead);
 
 
 int  main(void)
@@ -102,6 +102,7 @@ void push(HStack* ahead, element value)				// 입력
 
 element pop(HStack* ahead)							// 삭제
 {
+	Node* curr;										// 삭제할 노드의 주소를 저장할 포인터 구조체
 	if (isEmpty(ahead))
 	{
 		printf("\nSTACK Underflow!!");
@@ -111,7 +112,9 @@ element pop(HStack* ahead)							// 삭제
 	else
 	{
 		int data = ahead->head->data;
+		curr = ahead->head;
 		ahead->head = ahead->head->link;
+		free(curr);									// 이렇게 안하고 free(ahead->head) 하면 오류가 발생함 
 		return data;
 	}
 
