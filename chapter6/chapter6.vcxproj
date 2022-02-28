@@ -20,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\01_2_LinkedQueue.c" />
+    <ClCompile Include="source\01_3_CircularQueue.c" />
+    <ClCompile Include="source\01_3_CircularQueue.h" />
+    <ClCompile Include="source\01_3_CircularQueue_Main.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

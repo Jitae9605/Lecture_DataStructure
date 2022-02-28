@@ -18,5 +18,14 @@
     <ClCompile Include="source\01_2_LinkedQueue.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="source\01_3_CircularQueue.h">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\01_3_CircularQueue.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="source\01_3_CircularQueue_Main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
