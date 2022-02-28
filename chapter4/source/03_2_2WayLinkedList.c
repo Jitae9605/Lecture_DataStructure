@@ -48,10 +48,11 @@ int main(voide)
 	
 	printNode(head);
 	
-	// allDelNode(head);
+	allDelNode(head);
+	printNode(head);						// 삭제후 삭제되었는지 확인 - 쓰레기값 출력후 오류가 발생하면 정상적으로 삭제된 것!
 
-	removeNode(head, searchNode(head, 60));
-	printNode(head);
+	// removeNode(head, searchNode(head, 60));
+	// printNode(head);
 
 	return 0;
 }
@@ -145,15 +146,16 @@ void allDelNode(Dnode* head)
 {
 	int i=1;
 	Dnode* curr = head->next;
+	printf("\n");
 	while (curr != NULL)
 	{
-		printf(" %d 번 노드 삭제\n", i);
+		
+		printf(" %2d 번 노드\t[data: %d ] 삭제\n", i, curr->data);
 		head = curr;
 		curr = curr->next;
 		free(head);
 		i++;
 	}
-
 }
 
 void removeNode(Dnode* head, Dnode* target)
@@ -165,11 +167,13 @@ void removeNode(Dnode* head, Dnode* target)
 		
 		if (curr == target)
 		{
+			curr->prev->next = curr->next;
+			curr->next->prev = curr->prev;
 			printf(" 대상 노드를 삭제합니다.\n");
 			free(curr);
 			return;
 		}
 	}
-	printf(" 대상을 찾지 못했습니다.\n");
+	return;
 	
 }
