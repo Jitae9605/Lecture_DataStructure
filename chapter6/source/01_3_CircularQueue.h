@@ -22,6 +22,6 @@ int QIsEmpty(Queue* pq);
 
 void Enqueue(Queue* pq, Data data);
 Data Dequeue(Queue* pq);
-Data Qpeek(Queue* pq);
+Data QPeek(Queue* pq);
 
 #endif

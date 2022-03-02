@@ -47,7 +47,7 @@ Data Dequeue(Queue* pq)
 	pq->front = NextPosIdx(pq->front);
 	return pq->queArr[pq->front];
 }
-Data Qpeek(Queue* pq)
+Data QPeek(Queue* pq)
 {
 	if (QIsEmpty(pq))
 	{
