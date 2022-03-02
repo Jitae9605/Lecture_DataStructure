@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\01_1_BubbleSorting.c">
+    <ClCompile Include="source\01_2_SelectSorting.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
