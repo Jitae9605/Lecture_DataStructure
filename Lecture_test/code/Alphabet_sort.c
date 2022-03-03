@@ -65,6 +65,7 @@ void createNode(LNode*head, char adata)
 	{
 		head->next = newNode;
 	}
+
 	else							// 노드가 있을때
 	{
 		newNode->next = head->next;
@@ -80,7 +81,6 @@ void printNode(LNode*head)						// 노드속 데이터 출력
 	char temp[MAX_NUM];							// 임시로 데이터 받아올 배열
 	int i = 0, a = 0, b = 0;					// 임시변수(반복문 및 갯수셀때 사용)
 
-	
 	while (curr != NULL)
 	{
 		temp[i] = curr->data;
@@ -141,7 +141,6 @@ void insertionSort(LNode* head)							// 삽입정렬함수
 		k++;
 		
 	}
-	
 
 	for (int i = 0; i < k-1; i++)						// temp배열을 대상으로 삽입정렬(매개변수로 받은 노드의 갯수(num)를 기준으로함)
 	{
@@ -162,7 +161,5 @@ void insertionSort(LNode* head)							// 삽입정렬함수
 		curr->data = temp[i];
 		curr = curr->next;
 	}
-
-
 }
 
