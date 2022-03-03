@@ -15,9 +15,9 @@ typedef struct _node {
 	struct _node* next;
 }LNode;
 
-void createNode(LNode* head, char adata);			// 노드생성
-void printNode(LNode* head);						// 노드출력
-void insertionSort(LNode* head);					// 정렬(삽입정렬)
+void createNode(LNode* head, char adata);				// 노드생성
+void printNode(LNode* head);							// 노드출력
+void insertionSort(LNode* head);						// 정렬(삽입정렬)
 
 int main(void)
 {
@@ -58,29 +58,28 @@ void createNode(LNode*head, char adata)
 	LNode* newNode = (LNode*)malloc(sizeof(LNode));
 	if (newNode == NULL) return;
 
-	newNode->data = adata;		// 초기화(입력받은 adata를 생성한 노드의 data에 입력)
-	newNode->next = NULL;		// 초기화
+	newNode->data = adata;					// 초기화(입력받은 adata를 생성한 노드의 data에 입력)
+	newNode->next = NULL;					// 초기화
 
-	if (head->next == NULL)		// 노드가 하나도 없을때
+	if (head->next == NULL)			// 노드가 하나도 없을때
 	{
 		head->next = newNode;
 	}
-	else						// 노드가 있을때
+	else							// 노드가 있을때
 	{
 		newNode->next = head->next;
 		head->next = newNode;
 	}
 }
 
-void printNode(LNode*head)
+void printNode(LNode*head)						// 노드속 데이터 출력
 {
 	LNode* curr = head->next;
-	char upper_ary[MAX_NUM] = { 0 };
-	char lower_ary[MAX_NUM] = { 0 };
-	char temp[MAX_NUM];
-	int i = 0;
-	int a = 0; 
-	int b = 0;
+	char upper_ary[MAX_NUM] = { 0 };			// 대문자 저장
+	char lower_ary[MAX_NUM] = { 0 };			// 소문자 저장
+	char temp[MAX_NUM];							// 임시로 데이터 받아올 배열
+	int i = 0, a = 0, b = 0;					// 임시변수(반복문 및 갯수셀때 사용)
+
 	
 	while (curr != NULL)
 	{
@@ -91,20 +90,20 @@ void printNode(LNode*head)
 
 	for (int j = 0; j < i; j++)
 	{
-		if (temp[j] >= 'a' && temp[j] <= 'z')
+		if (temp[j] >= 'a' && temp[j] <= 'z')			// 받아온 데이터중 소문자는 lower에 저장
 		{
 			lower_ary[a] = temp[j];
 			a++;
 		}
 
-		if (temp[j] >= 'A' && temp[j] <= 'Z')
+		if (temp[j] >= 'A' && temp[j] <= 'Z')			// 받아온 데이터중 대문자는 upper에 저장
 		{
 			upper_ary[b] = temp[j];
 			b++;
 		}
 	}
-
-	if (upper_ary[0] != 0)
+		
+	if (upper_ary[0] != 0)								// 대문자 출력
 	{
 		printf(" 대문자 : ");
 		for (int c = 0; c < a; c++)
@@ -114,7 +113,7 @@ void printNode(LNode*head)
 	}
 	printf("\n\n");
 
-	if (lower_ary[0] != 0)
+	if (lower_ary[0] != 0)								// 소문자 출력
 	{
 		printf(" 소문자 : ");
 		for (int d = 0; d < b; d++)
@@ -125,7 +124,7 @@ void printNode(LNode*head)
 	printf("\n\n");
 }
 
-void insertionSort(LNode* head)
+void insertionSort(LNode* head)							// 삽입정렬함수
 {
 	char temp[MAX_NUM + 1] = { '0', };					// 정렬때 사용할 문자열 배열생성 및 초기화
 	int k = 0;											// 반복을 위한 임시변수
