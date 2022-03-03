@@ -176,11 +176,11 @@ void insertionSort_L(LNode* head)
 	LNode* Data;
 	char temp;
 
-	while(curr->next != NULL)
+	while (curr->next != NULL)
 	{
 		Data = curr->next;
 
-		while(Data != NULL)
+		while (Data != NULL)
 		{
 			temp = Data->data;
 			if (curr->data > Data->data)
@@ -192,7 +192,6 @@ void insertionSort_L(LNode* head)
 		}
 		curr = curr->next;
 	}
-
 }
 
 void insertionSort(LNode* head)							// 삽입정렬함수
