@@ -4,24 +4,27 @@
 
 int BSearch(int* ary, int alen, int akey)
 {
-	int mid = alen / 2 ;
-	if (akey == ary[mid]) return mid;
+	int first = 0;
+	int last = alen - 1;
+	int mid;
 
-	else if (akey > ary[mid])
+	while (first <= last)
 	{
-		for (int i = mid + 1; i < alen; i++)
+		mid = (first + last) / 2;
+		if (ary[mid] == akey) return mid;
+		else
 		{
-			if (ary[i] == akey) return i;
+			if (ary[mid] > akey)
+			{
+				last = mid-1;
+			}
+			else
+			{
+				first = mid+1;
+			}
 		}
 	}
-	else if (akey < ary[mid])
-	{
-		for (int j = 0; j < mid; j++)
-		{
-			if (ary[j] == akey) return j;
-		}
-	}
-	else return -1;
+	return -1;
 }
 
 int main(void)
