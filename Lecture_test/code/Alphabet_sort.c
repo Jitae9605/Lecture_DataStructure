@@ -18,6 +18,10 @@ typedef struct _node {
 void createNode(LNode* head, char adata);				// 노드생성
 void printNode(LNode* head);							// 노드출력
 void insertionSort(LNode* head);						// 정렬(삽입정렬)
+void delNode(LNode* head);
+void printNode_L(LNode* head);
+void insertionSort_L(LNode* head);
+
 
 int main(void)
 {
@@ -41,15 +45,27 @@ int main(void)
 		num++;											// 생성된 노드의 숫자 카운트
 	}
 
+	printf("\n\n====================== 배열 이용 ===========================\n\n");
+
+	//printf("\n=== < 정렬 전 > ===\n\n");
+	//printNode(head);		
+
+	//insertionSort(head);
+
+	//printf("=== < 정렬 후 > ===\n\n");
+	//printNode(head);
+
+	printf("\n\n====================== 연결리스트 이용 ===========================\n\n");
+
 	printf("\n=== < 정렬 전 > ===\n\n");
-	printNode(head);		
-
-	insertionSort(head);
-
-	printf("=== < 정렬 후 > ===\n\n");
 	printNode(head);
 
+	insertionSort_L(head);
 
+	printf("=== < 정렬 후 > ===\n\n");
+	printNode_L(head);
+
+	delNode(head);
 	return 0;
 }
 
@@ -73,13 +89,38 @@ void createNode(LNode*head, char adata)
 	}
 }
 
+void printNode_L(LNode* head)
+{
+	LNode* curr = head->next;
+
+	printf("대문자 : ");
+	while (curr->data <= 90)
+	{
+		printf("%c ", curr->data);
+		curr = curr->next;
+	}
+	printf("\n");
+	printf("소문자 : ");
+	while (curr != NULL)
+	{
+		printf("%c ", curr->data);
+		curr = curr->next;
+	}
+
+	
+	printf("\n\n");
+
+}
+
 void printNode(LNode*head)						// 노드속 데이터 출력
 {
 	LNode* curr = head->next;
 	char upper_ary[MAX_NUM] = { 0 };			// 대문자 저장
 	char lower_ary[MAX_NUM] = { 0 };			// 소문자 저장
 	char temp[MAX_NUM];							// 임시로 데이터 받아올 배열
-	int i = 0, a = 0, b = 0;					// 임시변수(반복문 및 갯수셀때 사용)
+	int i = 0;									// 임시변수(반복문 및 갯수셀때 사용)
+	int a = 0;
+	int b = 0;					
 
 	while (curr != NULL)
 	{
@@ -87,7 +128,14 @@ void printNode(LNode*head)						// 노드속 데이터 출력
 		curr = curr->next;
 		i++;
 	}
+	curr = head->next;
+	//for (int Z = 0; Z < i; Z++)
+	//{
+	//	printf("%c %c ", temp[Z], curr->data);
+	//	curr = curr->next;
+	//}
 
+	
 	for (int j = 0; j < i; j++)
 	{
 		if (temp[j] >= 'a' && temp[j] <= 'z')			// 받아온 데이터중 소문자는 lower에 저장
@@ -96,32 +144,55 @@ void printNode(LNode*head)						// 노드속 데이터 출력
 			a++;
 		}
 
-		if (temp[j] >= 'A' && temp[j] <= 'Z')			// 받아온 데이터중 대문자는 upper에 저장
+		else if (temp[j] >= 'A' && temp[j] <= 'Z')			// 받아온 데이터중 대문자는 upper에 저장
 		{
 			upper_ary[b] = temp[j];
 			b++;
 		}
 	}
 		
-	if (upper_ary[0] != 0)								// 대문자 출력
+	
+	printf(" 대문자 : ");
+	for (int c = 0; c < b; c++)
 	{
-		printf(" 대문자 : ");
-		for (int c = 0; c < a; c++)
-		{
-			printf("%c ", upper_ary[c]);
-		}
+		printf("%c ", upper_ary[c]);
 	}
+	
 	printf("\n\n");
 
-	if (lower_ary[0] != 0)								// 소문자 출력
+	
+	printf(" 소문자 : ");
+	for (int d = 0; d < a; d++)
 	{
-		printf(" 소문자 : ");
-		for (int d = 0; d < b; d++)
-		{
-			printf("%c ", lower_ary[d]);
-		}
+		printf("%c ", lower_ary[d]);
 	}
+	
 	printf("\n\n");
+}
+
+void insertionSort_L(LNode* head)
+{
+	LNode* curr = head->next;
+	LNode* Data;
+	char temp;
+
+	while(curr->next != NULL)
+	{
+		Data = curr->next;
+
+		while(Data != NULL)
+		{
+			temp = Data->data;
+			if (curr->data > Data->data)
+			{
+				Data->data = curr->data;
+				curr->data = temp;
+			}
+			Data = Data->next;
+		}
+		curr = curr->next;
+	}
+
 }
 
 void insertionSort(LNode* head)							// 삽입정렬함수
@@ -163,3 +234,14 @@ void insertionSort(LNode* head)							// 삽입정렬함수
 	}
 }
 
+void delNode(LNode* head)
+{
+	LNode* curr = head->next;
+	
+	while (head->next != NULL)
+	{
+		curr = head->next;
+		head->next = head->next->next;
+		free(curr);
+	}
+}
