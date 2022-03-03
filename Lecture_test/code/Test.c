@@ -1,3 +1,9 @@
+/*
+	Alphabet_sort.c
+	creaated : 2022. 3. 3
+	Author : 이지태
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -11,7 +17,7 @@ typedef struct _node {
 
 void createNode(LNode* head, char adata);			// 노드생성
 void printNode(LNode* head);						// 노드출력
-void insertionSort(LNode* head, int num);			// 정렬(삽입정렬)
+void insertionSort(LNode* head);					// 정렬(삽입정렬)
 
 int main(void)
 {
@@ -35,10 +41,12 @@ int main(void)
 		num++;											// 생성된 노드의 숫자 카운트
 	}
 
+	printf("\n=== < 정렬 전 > ===\n\n");
 	printNode(head);		
 
-	insertionSort(head,num);
+	insertionSort(head);
 
+	printf("=== < 정렬 후 > ===\n\n");
 	printNode(head);
 
 
@@ -67,21 +75,61 @@ void createNode(LNode*head, char adata)
 void printNode(LNode*head)
 {
 	LNode* curr = head->next;
+	char upper_ary[MAX_NUM] = { 0 };
+	char lower_ary[MAX_NUM] = { 0 };
+	char temp[MAX_NUM];
+	int i = 0;
+	int a = 0; 
+	int b = 0;
 	
 	while (curr != NULL)
 	{
-		printf("%c ", curr->data);
+		temp[i] = curr->data;
 		curr = curr->next;
+		i++;
+	}
+
+	for (int j = 0; j < i; j++)
+	{
+		if (temp[j] >= 'a' && temp[j] <= 'z')
+		{
+			lower_ary[a] = temp[j];
+			a++;
+		}
+
+		if (temp[j] >= 'A' && temp[j] <= 'Z')
+		{
+			upper_ary[b] = temp[j];
+			b++;
+		}
+	}
+
+	if (upper_ary[0] != 0)
+	{
+		printf(" 대문자 : ");
+		for (int c = 0; c < a; c++)
+		{
+			printf("%c ", upper_ary[c]);
+		}
 	}
 	printf("\n\n");
-	
+
+	if (lower_ary[0] != 0)
+	{
+		printf(" 소문자 : ");
+		for (int d = 0; d < b; d++)
+		{
+			printf("%c ", lower_ary[d]);
+		}
+	}
+	printf("\n\n");
 }
 
-void insertionSort(LNode* head,int num)
+void insertionSort(LNode* head)
 {
 	char temp[MAX_NUM + 1] = { '0', };					// 정렬때 사용할 문자열 배열생성 및 초기화
-	int k = 0;											// 반복을 위한 임시
-	char t;												// 정렬때 사용할 임시공산
+	int k = 0;											// 반복을 위한 임시변수
+	char t;												// 정렬때 사용할 임시공간
 	int maxIdx = 0;
 	LNode* curr = (LNode*)malloc(sizeof(LNode));
 	if (curr == NULL) return;
@@ -96,10 +144,10 @@ void insertionSort(LNode* head,int num)
 	}
 	
 
-	for (int i = 0; i < num-1; i++)						// temp배열을 대상으로 삽입정렬(매개변수로 받은 노드의 갯수(num)를 기준으로함)
+	for (int i = 0; i < k-1; i++)						// temp배열을 대상으로 삽입정렬(매개변수로 받은 노드의 갯수(num)를 기준으로함)
 	{
 		maxIdx = i;
-		for (int j = i + 1; j < num; j++)
+		for (int j = i + 1; j < k; j++)
 		{
 			if (temp[j] < temp[maxIdx])
 				maxIdx = j;
@@ -110,7 +158,7 @@ void insertionSort(LNode* head,int num)
 	}
 
 	curr = head->next;									// 정렬된 temp의 값을 순서대로 노드의 data멤버에 삽입
-	for (int i = 0; i < num; i++)
+	for (int i = 0; i < k; i++)
 	{
 		curr->data = temp[i];
 		curr = curr->next;
